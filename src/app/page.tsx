@@ -2,201 +2,251 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-
-/**
- * Deep Sea — immersive page
- * - Fixed gradient abyss background
- * - Procedural caustics (SVG filter)
- * - Particle field (bioluminescent plankton) with cursor stimulus
- * - Scroll-snap sections + glass panels
- */
-
-/* -------------------------------- Page -------------------------------- */
+import { Github, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function Page() {
   return (
     <div className="relative">
-      {/* BACKGROUND GRADIENT (fixed) */}
+      {/* background */}
       <div className="fixed inset-0 -z-40 bg-[radial-gradient(120%_80%_at_50%_-10%,var(--abyss-top),var(--abyss-mid)_50%,var(--abyss-bottom))]" />
-
-      {/* CAUSTICS OVERLAY (procedural SVG) */}
-      <div className="fixed inset-0 -z-30 opacity-[0.28] mix-blend-screen">
+      <div className="fixed inset-0 -z-30 opacity-30 mix-blend-screen">
         <Caustics />
       </div>
-
-      {/* PARTICLES (bioluminescence) */}
       <div className="fixed inset-0 -z-20">
-        <ParticleField />
+        <Bioluminescence />
       </div>
-
-      {/* VIGNETTE */}
       <div className="vignette fixed inset-0 -z-10" />
 
-      {/* CONTENT */}
-      <Header />
+      {/* content */}
+      <TopBar />
       <main className="snap-container">
-        <Hero />
-        <Section id="work" title="Selected Work">
+        <Intro />
+
+        {/* EXPERIENCES */}
+        <Block id="experiences" title="Experiences">
           <Grid>
-            <Panel title="MIM HyperControl GUI">
+            <Card title="MIM HyperControl GUI">
               Instrument orchestration, live plots, channel switching, and safety interlocks.
-            </Panel>
-            <Panel title="Particle Filter Arrow Matcher">
-              Probabilistic tracking with unit-aware scaling and masked regions.
-            </Panel>
-            <Panel title="Rivals Ban Recommender">
-              Hero-pool models, synergy maps, and tournament-style global bans.
-            </Panel>
-            <Panel title="Scoreboard OCR">
-              Column-locked OCR with error bounds and timeline alignment.
-            </Panel>
-          </Grid>
-        </Section>
-
-        <Section id="research" title="Research & Systems">
-          <Grid>
-            <Panel title="Microwave Impedance Microscopy">
+            </Card>
+            <Card title="Microwave Impedance Microscopy">
               Real-time signal vs. spatial axes with configurable channels.
-            </Panel>
-            <Panel title="Probabilistic Tracking">
-              PF + EKF fusion for motif localization in noisy, masked domains.
-            </Panel>
-          </Grid>
-        </Section>
-
-        <Section id="esports" title="Esports Analytics">
-          <Grid>
-            <Panel title="Marvel Rivals">
-              Pick/ban optimization, synergy maps, replay ingestion, and event timelines.
-            </Panel>
-            <Panel title="Pipelines">
+            </Card>
+            <Card title="Pipelines">
               Ingestion → OCR → feature engineering → dashboards (Supabase/Postgres, React).
-            </Panel>
+            </Card>
           </Grid>
-        </Section>
+        </Block>
 
-        <Section id="about" title="About">
+        {/* PROJECTS */}
+        <Block id="projects" title="Projects">
+          <Grid>
+            <Card title="Particle Filter Arrow Matcher">
+              Probabilistic tracking with unit-aware scaling and masked regions.
+            </Card>
+            <Card title="Rivals Ban Recommender">
+              Hero-pool models, synergy maps, and tournament-style global bans.
+            </Card>
+            <Card title="Scoreboard OCR">
+              Column-locked OCR with error bounds and timeline alignment.
+            </Card>
+            <Card title="Marvel Rivals">
+              Pick/ban optimization, synergy maps, replay ingestion, and event timelines.
+            </Card>
+          </Grid>
+        </Block>
+
+        <Block id="about" title="About">
           <div className="panel p-6">
-            <p className="max-w-3xl text-neutral-200">
-              Hi, I’m Philip. I build systems that bridge research precision and playful interaction—calm structures
-              set in a vast, bioluminescent environment.
-            </p>
+            <p className="max-w-3xl text-neutral-200">Hi, I’m Philip. I like to build things.</p>
           </div>
-        </Section>
+        </Block>
 
-        <Footer />
+        <SiteFooter />
       </main>
     </div>
   );
 }
 
-/* ------------------------------ Header ------------------------------- */
+/* layout */
 
-function Header() {
+function TopBar() {
   return (
-    <header className="fixed top-0 z-40 w-full border-b border-white/10 bg-black/20 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
-        <div className="font-medium tracking-wide">Philip Suh</div>
-        <nav className="flex items-center gap-5 text-sm">
-          <a className="hover:opacity-90" href="#work">Work</a>
-          <a className="hover:opacity-90" href="#research">Research</a>
-          <a className="hover:opacity-90" href="#esports">Esports</a>
-          <a className="rounded-full border border-white/15 px-3 py-1 hover:bg-white/5" href="#about">About</a>
+    <header className="fixed top-0 z-40 w-full border-b border-white/10 bg-black/25 backdrop-blur-lg">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:py-5">
+        {/* Name / Logo */}
+        <div className="text-lg font-medium tracking-wide text-white">Philip Suh</div>
+
+        {/* Nav links */}
+        <nav className="flex items-center gap-7 text-[15px] text-neutral-200">
+          <a className="hover:text-white transition" href="#experiences">
+            Experiences
+          </a>
+          <a className="hover:text-white transition" href="#projects">
+            Projects
+          </a>
+          <a
+            className="rounded-full border border-white/20 px-4 py-1.5 hover:bg-white/10 transition"
+            href="#about"
+          >
+            About
+          </a>
+
+          {/* Social Icons */}
+          <div className="ml-6 flex items-center gap-5 text-white">
+            <a
+              href="mailto:philip@example.com"
+              aria-label="Email"
+              className="hover:text-cyan-300 transition"
+            >
+              <Mail size={22} strokeWidth={1.6} />
+            </a>
+            <a
+              href="https://github.com/phlpsuh"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="hover:text-cyan-300 transition"
+            >
+              <Github size={22} strokeWidth={1.6} />
+            </a>
+            <a
+              href="https://linkedin.com/in/phlpsuh"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="hover:text-cyan-300 transition"
+            >
+              <Linkedin size={22} strokeWidth={1.6} />
+            </a>
+          </div>
         </nav>
       </div>
     </header>
   );
 }
 
-/* ------------------------------ Sections ----------------------------- */
-
-function Hero() {
+function Intro() {
   return (
-    <section className="snap-section flex min-h-[100dvh] items-center justify-center text-center px-6">
-      <div className="relative z-0 max-w-4xl pt-16">
-        <motion.h1
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl md:text-6xl font-semibold tracking-tight drop-shadow-[0_6px_24px_rgba(56,176,255,0.25)]"
-        >
-          Into the Deep
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.05 }}
-          className="mt-4 text-lg text-neutral-200 max-w-2xl mx-auto"
-        >
-          An immersive, bioluminescent portfolio—quiet, focused, and alive.
-        </motion.p>
+    <section className="snap-section flex min-h-[100dvh] items-center justify-center px-6 text-center">
+      <div className="relative z-0 max-w-6xl pt-32 flex flex-col md:flex-row items-center md:justify-center gap-16">
+        {/* Portrait */}
+        <div className="flex-shrink-0">
+          <Image
+            src="/photo.png"
+            alt="Philip Suh"
+            width={300}
+            height={300}
+            priority
+            className="rounded-full ring-1 ring-white/10 shadow-[0_0_55px_rgba(56,176,255,0.45)] hover:scale-[1.035] transition-transform duration-700"
+          />
+        </div>
 
-        <div className="mt-10 flex items-center justify-center gap-3">
-          <a href="#work" className="panel px-5 py-2 text-sm hover:opacity-95">View Work</a>
-          <a href="#about" className="rounded-md border border-white/15 px-5 py-2 text-sm bg-white/5 hover:bg-white/10">
-            About
-          </a>
+        {/* Intro Text */
+        /* bumped sizes up one step */}
+        <div className="md:text-left text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="text-6xl md:text-8xl font-semibold tracking-tight text-white drop-shadow-[0_10px_30px_rgba(56,176,255,0.25)]"
+          >
+            Hi, I’m Philip
+          </motion.h1>
+
+          {/* Education tagline (visible on load) */}
+          <p className="mt-3 text-base md:text-lg text-neutral-300">
+            Stanford University • B.S. Computer Science • GPA 3.98 • 2023–2027
+          </p>
+
+          {/* Buttons */}
+          <div className="mt-12 flex items-center justify-center md:justify-start gap-6">
+            <a href="#projects" className="panel px-7 py-3 text-[15px] font-medium hover:opacity-95">
+              View Projects
+            </a>
+            <a
+              href="#about"
+              className="rounded-md border border-white/15 bg-white/5 px-7 py-3 text-[15px] font-medium hover:bg-white/10"
+            >
+              About
+            </a>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function Section({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) {
+function Block({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) {
   return (
-    <section id={id} className="snap-section relative flex items-center px-6">
+    <section id={id} className="snap-section relative px-6">
+      {/* Outer container controls overall page width */}
       <div className="mx-auto w-full max-w-6xl">
-        <h2 className="mb-4 text-xl font-semibold tracking-wide">{title}</h2>
-        <div className="hr mb-6" />
-        {children}
+        {/* Inner wrapper is centered and sets the exact row width
+            -> header and cards share the same left edge + are symmetric */}
+        <div className="mx-auto w-full md:w-[90%] lg:w-[85%] xl:w-[80%]">
+          <h2 className="mb-4 text-2xl md:text-3xl font-semibold tracking-wide text-white">
+            {title}
+          </h2>
+          <div className="hr mb-8" />
+
+          <Grid>{children}</Grid>
+        </div>
       </div>
     </section>
   );
 }
 
 function Grid({ children }: { children: React.ReactNode }) {
-  return <div className="grid gap-6 md:grid-cols-2">{children}</div>;
-}
-
-function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="panel p-5">
-      <div className="font-medium text-neutral-100">{title}</div>
-      <div className="mt-2 text-neutral-300">{children}</div>
+    <div className="flex flex-col gap-8">
+      {React.Children.map(children, (child) => (
+        <div className="flex">{child}</div> // one card per row, left-aligned within inner wrapper
+      ))}
     </div>
   );
 }
 
-function Footer() {
+function Card({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    // full width of the inner wrapper, so header + card edges align perfectly
+    <div className="panel p-6 w-full">
+      <div className="font-medium text-lg text-neutral-100">{title}</div>
+      <div className="mt-2 text-neutral-300 leading-relaxed">{children}</div>
+    </div>
+  );
+}
+
+function SiteFooter() {
   return (
     <footer id="contact" className="snap-section relative flex items-center border-t border-white/10">
       <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-10 md:flex-row md:items-center md:justify-between">
         <p className="text-sm text-neutral-300">Open to SWE/Research roles & collaborations.</p>
         <div className="flex flex-wrap gap-3 text-sm">
-          <a className="hover:opacity-90" href="mailto:philip@example.com">Email</a>
-          <a className="hover:opacity-90" href="#">LinkedIn</a>
-          <a className="hover:opacity-90" href="#">GitHub</a>
+          <a className="hover:opacity-90" href="mailto:philip@example.com">
+            Email
+          </a>
+          <a className="hover:opacity-90" href="#">
+            LinkedIn
+          </a>
+          <a className="hover:opacity-90" href="#">
+            GitHub
+          </a>
         </div>
       </div>
     </footer>
   );
 }
 
-/* -------------------------- Visual Layers ---------------------------- */
+/* visuals */
 
-/* Caustics: animated SVG filter for underwater light */
 function Caustics() {
   return (
     <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
       <defs>
         <filter id="caustics">
           <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="11">
-            <animate
-              attributeName="baseFrequency"
-              dur="18s"
-              values="0.008 0.012; 0.010 0.014; 0.008 0.012"
-              repeatCount="indefinite"
-            />
+            <animate attributeName="baseFrequency" dur="18s" values="0.008 0.012; 0.010 0.014; 0.008 0.012" repeatCount="indefinite" />
           </feTurbulence>
           <feColorMatrix type="saturate" values="0" />
           <feComponentTransfer>
@@ -209,8 +259,7 @@ function Caustics() {
   );
 }
 
-/* Particle Field: bioluminescence with cursor stimulus */
-function ParticleField() {
+function Bioluminescence() {
   const ref = React.useRef<HTMLCanvasElement | null>(null);
 
   React.useEffect(() => {
@@ -223,97 +272,100 @@ function ParticleField() {
     canvas.style.width = "100%";
     canvas.style.height = "100%";
 
-    const resize = () => {
+    const onResize = () => {
       w = canvas.width = Math.floor(window.innerWidth * dpr);
       h = canvas.height = Math.floor(window.innerHeight * dpr);
     };
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", onResize);
 
-    // Particles
-    const baseDensity = 1.0;
-    const N = Math.floor((w * h) / (105000 * dpr) * baseDensity);
-    type P = { x: number; y: number; r: number; hue: number; a: number; vx: number; vy: number; boost: number };
-    const pts: P[] = [];
-    for (let i = 0; i < N; i++) {
-      const hue = 185 + Math.random() * 40; // cyan/blue
-      const a = 0.18 + Math.random() * 0.25;
-      const r = (Math.random() < 0.2 ? 1.4 : 0.9) * dpr; // a few brighter
-      pts.push({
+    const count = Math.floor((w * h) / (105000 * dpr));
+    type Dot = { x: number; y: number; r: number; hue: number; a: number; vx: number; vy: number; k: number };
+    const dots: Dot[] = [];
+    for (let i = 0; i < count; i++) {
+      const hue = 185 + Math.random() * 40;
+      const alpha = 0.18 + Math.random() * 0.25;
+      const r = (Math.random() < 0.2 ? 1.4 : 0.9) * dpr;
+      dots.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        r, hue, a,
+        r,
+        hue,
+        a: alpha,
         vx: (Math.random() - 0.5) * 0.08 * dpr,
         vy: (Math.random() - 0.5) * 0.08 * dpr,
-        boost: 0,
+        k: 0,
       });
     }
 
-    // Cursor
-    let mouseX = -9999, mouseY = -9999, hasMouse = false;
-    const onMove = (e: MouseEvent) => { mouseX = e.clientX * dpr; mouseY = e.clientY * dpr; hasMouse = true; };
-    const onLeave = () => { hasMouse = false; };
-    window.addEventListener("mousemove", onMove, { passive: true });
-    window.addEventListener("mouseleave", onLeave);
+    let mx = -9999,
+      my = -9999,
+      active = false;
+    const move = (e: MouseEvent) => {
+      mx = e.clientX * dpr;
+      my = e.clientY * dpr;
+      active = true;
+    };
+    const leave = () => {
+      active = false;
+    };
+    window.addEventListener("mousemove", move, { passive: true });
+    window.addEventListener("mouseleave", leave);
 
-    // Stimulus params
-    const RADIUS = 120 * dpr;
-    const MAX_BOOST = 0.55;
+    const R = 120 * dpr;
+    const BOOST = 0.55;
     const DECAY = 0.92;
 
     let raf = 0;
-    const tick = () => {
-      raf = requestAnimationFrame(tick);
+    const frame = () => {
+      raf = requestAnimationFrame(frame);
       ctx.clearRect(0, 0, w, h);
 
-      // depth fog
-      const grad = ctx.createLinearGradient(0, 0, 0, h);
-      grad.addColorStop(0, "rgba(0,12,24,0.10)");
-      grad.addColorStop(1, "rgba(0,0,0,0.18)");
-      ctx.fillStyle = grad;
+      const fog = ctx.createLinearGradient(0, 0, 0, h);
+      fog.addColorStop(0, "rgba(0,12,24,0.10)");
+      fog.addColorStop(1, "rgba(0,0,0,0.18)");
+      ctx.fillStyle = fog;
       ctx.fillRect(0, 0, w, h);
 
-      for (const p of pts) {
-        // integrate
-        p.x += p.vx; p.y += p.vy;
+      for (const p of dots) {
+        p.x += p.vx;
+        p.y += p.vy;
         if (p.x < -10) p.x = w + 10;
         if (p.x > w + 10) p.x = -10;
         if (p.y < -10) p.y = h + 10;
         if (p.y > h + 10) p.y = -10;
 
-        // stimulus
-        if (hasMouse) {
-          const dx = p.x - mouseX, dy = p.y - mouseY;
-          const d2 = dx*dx + dy*dy;
-          if (d2 < RADIUS * RADIUS) {
-            const t = 1 - Math.sqrt(d2) / RADIUS;   // 0..1
-            const bump = t * t * MAX_BOOST;
-            p.boost = Math.min(MAX_BOOST, p.boost + bump);
+        if (active) {
+          const dx = p.x - mx,
+            dy = p.y - my;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < R * R) {
+            const t = 1 - Math.sqrt(d2) / R;
+            p.k = Math.min(BOOST, p.k + t * t * BOOST);
           }
         }
-        p.boost *= DECAY;
+        p.k *= DECAY;
 
-        // render (glow + core)
-        const alpha = p.a + p.boost;
-        const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
-        glow.addColorStop(0, `hsla(${p.hue}, 85%, 70%, ${alpha})`);
-        glow.addColorStop(1, `hsla(${p.hue}, 85%, 70%, 0)`);
-        ctx.fillStyle = glow;
+        const a = p.a + p.k;
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
+        g.addColorStop(0, `hsla(${p.hue}, 85%, 70%, ${a})`);
+        g.addColorStop(1, `hsla(${p.hue}, 85%, 70%, 0)`);
+        ctx.fillStyle = g;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r * 3.5, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${p.hue}, 95%, 78%, ${Math.min(1, alpha + 0.08)})`;
+        ctx.fillStyle = `hsla(${p.hue}, 95%, 78%, ${Math.min(1, a + 0.08)})`;
         ctx.fill();
       }
     };
-    tick();
 
+    frame();
     return () => {
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseleave", leave);
       cancelAnimationFrame(raf);
     };
   }, []);

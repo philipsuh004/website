@@ -68,3 +68,9 @@ body {
   background: #102437;
   border-radius: 8px;
 }
+
+body {
+  font-size: 1.125rem; /* ~18px instead of 16px */
+  line-height: 1.6;
+}
+
