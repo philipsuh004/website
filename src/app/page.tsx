@@ -59,7 +59,7 @@ export default function Page() {
               <p>
                 Analyzed luminosity datasets (SDSS, Fermi-LAT, VLBI) using non-parametric statistical methods in Python (numpy, scipy, 
                 astropy, pandas) to help understand accretion disk-jet correlations and their cosmological evolutions. Derived the 
-                radio-gamma luminosity funtion and applied Kendall's tau and Pearson correlation tests, showing higher gamma-radio local
+                radio-gamma luminosity funtion and applied Kendall&rsquo;ss tau and Pearson correlation tests, showing higher gamma-radio local
                 luminosity correlations in comparison to radio-optical.
               </p>
             </ExpandableRow>
