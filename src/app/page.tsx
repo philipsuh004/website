@@ -156,7 +156,7 @@ export default function Page() {
 
             <div className="text-center md:text-left">
               <h3 className="text-xl font-semibold text-white mb-2">
-                Hi, I’m Philip Suh
+                Hi, I'm Philip Suh
               </h3>
               <p className="text-neutral-300 leading-relaxed">
                 I am currently a student at Stanford University studying computer science. I love to
@@ -257,7 +257,7 @@ function Intro() {
             transition={{ duration: 0.45 }}
             className="text-6xl md:text-8xl font-semibold tracking-tight text-white drop-shadow-[0_10px_30px_rgba(56,176,255,0.25)]"
           >
-            Hi, I’m Philip
+            Hi, I'm Philip
           </motion.h1>
 
           <p className="mt-3 text-base md:text-lg text-neutral-300">
