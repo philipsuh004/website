@@ -178,14 +178,17 @@ export default function Page() {
 }
 
 /* ───────────────────────── layout & header ───────────────────────── */
-
 function TopBar() {
   return (
     <header className="fixed top-0 z-40 w-full border-b border-white/10 bg-black/25 backdrop-blur-lg">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:py-5">
-        <div className="text-lg font-medium tracking-wide text-white">Philip Suh</div>
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between px-4 py-4 sm:px-6 sm:py-5 gap-3">
+        {/* Left: Name */}
+        <div className="text-base sm:text-lg font-medium tracking-wide text-white flex-shrink-0">
+          Philip Suh
+        </div>
 
-        <nav className="flex items-center gap-7 text-[15px] text-neutral-200">
+        {/* Right: Nav */}
+        <nav className="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-7 text-[14px] sm:text-[15px] text-neutral-200 w-full sm:w-auto">
           <a className="hover:text-white transition" href="#experiences">
             Experiences
           </a>
@@ -202,13 +205,14 @@ function TopBar() {
             About
           </a>
 
-          <div className="ml-6 flex items-center gap-5 text-white">
+          {/* Icons — wrap on mobile */}
+          <div className="flex items-center justify-center sm:justify-end gap-4 sm:gap-5 text-white w-full sm:w-auto mt-2 sm:mt-0">
             <a
               href="mailto:philip.suh@stanford.edu"
               aria-label="Email"
               className="hover:text-cyan-300 transition"
             >
-              <Mail size={22} strokeWidth={1.6} />
+              <Mail size={20} sm-size={22} strokeWidth={1.6} />
             </a>
             <a
               href="https://github.com/philipsuh004"
@@ -217,7 +221,7 @@ function TopBar() {
               aria-label="GitHub"
               className="hover:text-cyan-300 transition"
             >
-              <Github size={22} strokeWidth={1.6} />
+              <Github size={20} sm-size={22} strokeWidth={1.6} />
             </a>
             <a
               href="https://linkedin.com/in/phlpsuh"
@@ -226,7 +230,7 @@ function TopBar() {
               aria-label="LinkedIn"
               className="hover:text-cyan-300 transition"
             >
-              <Linkedin size={22} strokeWidth={1.6} />
+              <Linkedin size={20} sm-size={22} strokeWidth={1.6} />
             </a>
           </div>
         </nav>
@@ -237,8 +241,9 @@ function TopBar() {
 
 function Intro() {
   return (
-    <section className="snap-section flex min-h-[100dvh] items-center justify-center px-6 text-center">
-      <div className="relative z-0 max-w-6xl pt-32 flex flex-col md:flex-row items-center md:justify-center gap-16">
+    <section className="snap-section flex min-h-[100dvh] items-center justify-center px-4 sm:px-6 text-center">
+      <div className="relative z-0 max-w-6xl pt-28 sm:pt-32 flex flex-col md:flex-row items-center md:justify-center gap-8 sm:gap-12 md:gap-16">
+        {/* Portrait */}
         <div className="flex-shrink-0">
           <Image
             src="/photo.png"
@@ -246,43 +251,52 @@ function Intro() {
             width={300}
             height={300}
             priority
-            className="rounded-full ring-1 ring-white/10 shadow-[0_0_55px_rgba(56,176,255,0.45)] hover:scale-[1.035] transition-transform duration-700"
+            className="rounded-full ring-1 ring-white/10 shadow-[0_0_55px_rgba(56,176,255,0.45)] hover:scale-[1.035] transition-transform duration-700
+                       w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 object-cover"
           />
         </div>
 
-        <div className="md:text-left text-center">
+        {/* Intro Text */}
+        <div className="md:text-left text-center max-w-xl sm:max-w-2xl">
           <motion.h1
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45 }}
-            className="text-6xl md:text-8xl font-semibold tracking-tight text-white drop-shadow-[0_10px_30px_rgba(56,176,255,0.25)]"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-white drop-shadow-[0_10px_30px_rgba(56,176,255,0.25)]"
           >
             Hi, I&rsquo;m Philip
           </motion.h1>
 
-          <p className="mt-3 text-base md:text-lg text-neutral-300">
+          <p className="mt-3 text-sm sm:text-base md:text-lg text-neutral-300">
             Stanford University • B.S. Computer Science • GPA 3.98 • 2023–2027
           </p>
 
-          <div className="mt-12 flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <a href="#projects" className="panel px-7 py-3 text-[15px] font-medium hover:opacity-95">
+          {/* Buttons */}
+          <div className="mt-8 sm:mt-10 md:mt-12 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4">
+            <a
+              href="#projects"
+              className="panel px-5 py-2.5 sm:px-7 sm:py-3 text-[14px] sm:text-[15px] font-medium hover:opacity-95"
+            >
               Projects
             </a>
-            <a href="#experiences" className="panel px-7 py-3 text-[15px] font-medium hover:opacity-95">
+            <a
+              href="#experiences"
+              className="panel px-5 py-2.5 sm:px-7 sm:py-3 text-[14px] sm:text-[15px] font-medium hover:opacity-95"
+            >
               Experiences
             </a>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="panel px-7 py-3 text-[15px] font-medium hover:opacity-95 inline-flex items-center gap-2"
+              className="panel px-5 py-2.5 sm:px-7 sm:py-3 text-[14px] sm:text-[15px] font-medium hover:opacity-95 inline-flex items-center gap-2"
             >
               <FileText size={16} strokeWidth={1.8} />
               Resume (PDF)
             </a>
             <a
               href="#about"
-              className="rounded-md border border-white/15 bg-white/5 px-7 py-3 text-[15px] font-medium hover:bg-white/10"
+              className="rounded-md border border-white/15 bg-white/5 px-5 py-2.5 sm:px-7 sm:py-3 text-[14px] sm:text-[15px] font-medium hover:bg-white/10"
             >
               About
             </a>
@@ -294,12 +308,25 @@ function Intro() {
 }
 
 /* ───────────────────────────── reusable blocks ───────────────────────────── */
-function Block({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) {
+function Block({
+  id,
+  title,
+  children,
+}: {
+  id?: string;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
-    <section id={id} className="relative px-6 py-10 md:py-14 scroll-mt-28 md:scroll-mt-36">
+    <section
+      id={id}
+      className="relative px-4 sm:px-6 py-8 md:py-12 scroll-mt-24 md:scroll-mt-32"
+    >
       <div className="mx-auto w-full max-w-7xl">
-        <h2 className="mb-3 text-2xl md:text-3xl font-semibold tracking-wide text-white">{title}</h2>
-        <div className="hr mb-5" />
+        <h2 className="mb-2 md:mb-3 text-2xl md:text-3xl font-semibold tracking-wide text-white">
+          {title}
+        </h2>
+        <div className="hr mb-4 md:mb-6" />
         <Grid>{children}</Grid>
       </div>
     </section>
@@ -307,11 +334,17 @@ function Block({ id, title, children }: { id?: string; title: string; children: 
 }
 
 function Grid({ children }: { children: React.ReactNode }) {
-  return <div className="flex flex-col gap-4">{children}</div>;
+  return (
+    <div className="flex w-full flex-col gap-3 sm:gap-4 md:gap-5">
+      {React.Children.map(children, (child) => (
+        <div className="w-full">{child}</div>
+      ))}
+    </div>
+  );
 }
 
-/* ───────────────────────────── Expandable Rows ───────────────────────────── */
 
+/* ───────────────────────────── Expandable Rows ───────────────────────────── */
 type LinkKind = "github" | "website" | "demo" | "paper" | "video" | "doc" | "other";
 type RowLink = { label: string; href: string; kind?: LinkKind };
 
@@ -331,7 +364,7 @@ function PillLink({ link }: { link: RowLink }) {
       href={href}
       target={href.startsWith("http") ? "_blank" : undefined}
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-neutral-200 hover:bg-white/10 transition"
+      className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-[11px] sm:text-xs text-neutral-200 hover:bg-white/10 transition"
     >
       <Icon size={14} strokeWidth={1.8} /> {label}
     </a>
@@ -372,23 +405,27 @@ function ExpandableRow({
           aria-controls={contentId}
           className="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60"
         >
-          <div className="flex items-start justify-between px-6 py-4">
-            <div className="flex flex-col gap-0.5">
-              <div className="flex items-center gap-3">
+          <div className="flex items-start justify-between px-4 sm:px-6 py-3 sm:py-4 gap-3">
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-3 min-w-0">
                 <ChevronDown
-                  className={`transition-transform duration-300 text-neutral-300 ${open ? "rotate-180" : ""}`}
+                  className={`shrink-0 transition-transform duration-300 text-neutral-300 ${open ? "rotate-180" : ""}`}
                   size={18}
                   strokeWidth={1.75}
                 />
-                <span className="font-medium text-neutral-100">{title}</span>
+                <span className="font-medium text-neutral-100 truncate">{title}</span>
               </div>
               {subtitle && (
-                <span className="ml-[1.6rem] text-sm text-neutral-400 leading-tight">
+                <span className="pl-[1.6rem] block text-xs sm:text-sm text-neutral-400 leading-tight mt-0.5">
                   {subtitle}
                 </span>
               )}
             </div>
-            <span className="text-sm text-neutral-300">{date}</span>
+
+            {/* Date (kept right on desktop, wraps on mobile) */}
+            <span className="shrink-0 text-xs sm:text-sm text-neutral-300 whitespace-nowrap">
+              {date}
+            </span>
           </div>
         </button>
 
@@ -399,7 +436,7 @@ function ExpandableRow({
             initial={false}
             animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="px-6 pb-5"
+            className="px-4 sm:px-6 pb-4 sm:pb-5"
             style={{ overflow: "hidden" }}
           >
             <div
@@ -410,6 +447,7 @@ function ExpandableRow({
             >
               {hasLogo && (
                 <div className="md:pr-2">
+                  {/* Full-bleed logo row height, preserves aspect ratio */}
                   <Image
                     src={logoSrc!}
                     alt={logoAlt ?? "Logo"}
@@ -439,13 +477,13 @@ function ExpandableRow({
   );
 }
 
-/* ─────────────────────────────── footer ─────────────────────────────── */
+/* ───────── footer ───────── */
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 mt-10">
-      <div className="mx-auto w-full max-w-6xl px-6 py-8">
-        <p className="text-center text-sm text-neutral-300">
+    <footer className="border-t border-white/10 mt-8 md:mt-10">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 py-6 sm:py-8">
+        <p className="text-center text-xs sm:text-sm text-neutral-300 leading-relaxed">
           Open to SWE / Research roles & collaborations.{" "}
           <a
             className="underline decoration-white/20 underline-offset-4 hover:text-white transition"
@@ -476,6 +514,7 @@ function SiteFooter() {
     </footer>
   );
 }
+
 
 /* ───────────────────────────── visuals ───────────────────────────── */
 
