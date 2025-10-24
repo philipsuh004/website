@@ -51,7 +51,7 @@ export default function Page() {
               </p>
               <br />
               <p>
-                Beyond algorithm development, I built a modular PyQt5 GUI that unifies data processing, live visualization, and hardware communication. This interface now serves as a central control hub for the lab's microscopy experiments, improving workflow efficiency for over 15 researchers and forming the basis for future automation work.
+                Beyond algorithm development, I built a modular PyQt5 GUI that unifies data processing, live visualization, and hardware communication. This interface now serves as a central control hub for the lab&rsquo;s microscopy experiments, improving workflow efficiency for over 15 researchers and forming the basis for future automation work.
               </p>
             </ExpandableRow>
 
@@ -67,11 +67,11 @@ export default function Page() {
               </p>
               <br />
               <p>
-                Using Python (NumPy, SciPy, Pandas, Astropy), I processed over 10,000 luminosity samples from SDSS, Fermi-LAT, and VLBI surveys. I applied the Efron–Petrosian method to remove redshift biases from truncated astronomical data and performed correlation analyses (Kendall's τ, Pearson) to identify statistically significant trends. The results revealed a stronger radio–gamma correlation (PCC = 0.53) compared to radio–optical (PCC = 0.40), consistent with a shared nonthermal origin of emission.
+                Using Python (NumPy, SciPy, Pandas, Astropy), I processed over 10,000 luminosity samples from SDSS, Fermi-LAT, and VLBI surveys. I applied the Efron–Petrosian method to remove redshift biases from truncated astronomical data and performed correlation analyses (Kendall&rsquo;s τ, Pearson) to identify statistically significant trends. The results revealed a stronger radio–gamma correlation (PCC = 0.53) compared to radio–optical (PCC = 0.40), consistent with a shared nonthermal origin of emission.
               </p>
               <br />
               <p>
-                This work contributed to Professor Petrosian's ongoing research on nonthermal radiation mechanisms and cosmological selection effects in high-energy astrophysics. I also developed visualization and preprocessing pipelines that standardized the analysis workflow for future luminosity correlation studies within KIPAC.
+                This work contributed to Professor Petrosian&rsquo;s ongoing research on nonthermal radiation mechanisms and cosmological selection effects in high-energy astrophysics. I also developed visualization and preprocessing pipelines that standardized the analysis workflow for future luminosity correlation studies within KIPAC.
               </p>
             </ExpandableRow>
 
@@ -87,7 +87,7 @@ export default function Page() {
               </p>
               <br />
               <p>
-                I benchmarked a permutation-invariant anomaly detection model in Python (scikit-learn, NumPy) across more than one million simulated particle events, achieving AUC = 0.98 and outperforming supervised baselines such as the Particle Flow Network. The model's architecture, designed to preserve event-level symmetries, demonstrated that unsupervised methods can rival fully labeled approaches in detecting exotic event topologies.
+                I benchmarked a permutation-invariant anomaly detection model in Python (scikit-learn, NumPy) across more than one million simulated particle events, achieving AUC = 0.98 and outperforming supervised baselines such as the Particle Flow Network. The model&rsquo;s architecture, designed to preserve event-level symmetries, demonstrated that unsupervised methods can rival fully labeled approaches in detecting exotic event topologies.
               </p>
               <br />
               <p>
