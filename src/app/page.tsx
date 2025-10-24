@@ -103,7 +103,7 @@ export default function Page() {
             </ExpandableRow>
 
             <ExpandableRow
-              title="Overwatch/Marvel Rivals Ro.Pa.Sci."
+              title="Counterwatch"
               date="Jun 2025 – Current"
             >
               <p>
