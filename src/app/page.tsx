@@ -94,12 +94,49 @@ export default function Page() {
                 Working closely with Dr. Gonski, I also identified and diagnosed oversampling artifacts in pile-up simulations that caused model performance to collapse (AUC = 0.49). Tracing the problem to statistical imbalance, I helped design higher-statistics datasets and improved the preprocessing pipeline, laying the groundwork for future anomaly-detection research in high-energy physics.
               </p>
             </ExpandableRow>
+
+            <ExpandableRow
+              title="Particle Physics Research Intern"
+              subtitle="UCLA Physics & Astronomy"
+              date="Jul 2021 – Jun 2023"
+              logoSrc="/ucla.png"
+              logoAlt="UCLA"
+            >
+              <p>
+                As a Research Intern with the UCLA Nuclear Physics Group, I worked under Professor Huan Zhong Huang and Associate Researcher Gang Wang on the study of high-energy particle collisions at the Large Hadron Collider (LHC) and Relativistic Heavy Ion Collider (RHIC). My primary project focused on analyzing particle spectra and nuclear modification factors (RAA) to uncover trends in parton energy loss within the quark–gluon plasma.
+              </p>
+              <br />
+              <p>
+                Using Python and ROOT, I processed large datasets from the ALICE and STAR experiments, extracting transverse-momentum spectra and investigating centrality-dependent suppression patterns across multiple collision energies. The analysis revealed contrasting energy-loss behaviors between RHIC and LHC systems, providing new insight into medium-induced parton interactions and their scaling with system size.
+              </p>
+              <br />
+              <p>
+                This research culminated in a peer-reviewed publication, &ldquo;Contrasting Features of Parton Energy Loss in Heavy-Ion Collisions at RHIC and LHC.&rdquo; My contributions supported the paper&rsquo;s quantitative findings and advanced ongoing efforts to characterize the properties of the quark–gluon plasma through cross-experiment comparisons.
+              </p>
+            </ExpandableRow>
           </Grid>
         </Block>
 
         {/* PROJECTS */}
         <Block id="projects" title="Projects">
           <Grid>
+            <ExpandableRow
+              title="Counterwatch"
+              date="Jun 2025 – Present"
+            >
+              <p>
+                Stack: XGBoost, TensorFlow, Next.js, TypeScript, PostgreSQL
+              </p>
+              <br />
+              <p>
+                Built a novel heirarchical esports analytics platform for Overwatch 2 and Marvel Rivals used proprietarily by 
+                professional teams in both games. Processes time series game data for advanced statistics such as ultimate
+                usage win rates, first death classifications, and character matchup spreads using an ML pipeline using XGBoost 
+                gradient boosting and TensorFlow neural networks. Optimized PostgreSQL database berformance, enabling Python 
+                ETL pipelines to process 17,000+ data points per game, cutting down manual analysis time by 70%.
+              </p>
+            </ExpandableRow>
+
             <ExpandableRow
               title="MIM Hypercontrol GUI"
               date="Jan 2025 - Oct 2025"
@@ -119,21 +156,21 @@ export default function Page() {
             </ExpandableRow>
 
             <ExpandableRow
-              title="Counterwatch"
-              date="Jun 2025 – Current"
+              title="PokerSync"
+              date="Apr 2025 – Apr 2025"
+              links={[
+                { label: "GitHub", href: "https://github.com/philipsuh004/Ai-Commentator", kind: "github" },
+              ]}
             >
               <p>
-                Stack: XGBoost, TensorFlow, Next.js, TypeScript, PostgreSQL
+                Stack: Flask, Gemini 2.0 Flash, ElevenLabs, React, Vite, FFmpeg
               </p>
               <br />
               <p>
-                Built a novel heirarchical esports analytics platform for Overwatch 2 and Marvel Rivals used proprietarily by 
-                professional teams in both games. Processes time series game data for advanced statistics such as ultimate
-                usage win rates, first death classifications, and character matchup spreads using an ML pipeline using XGBoost 
-                gradient boosting and TensorFlow neural networks. Optimized PostgreSQL database berformance, enabling Python 
-                ETL pipelines to process 17,000+ data points per game, cutting down manual analysis time by 70%.
+                3rd Place– AGI House Google AI Build Weekend Hackathon for developing an AI poker commentator with real-time video analysis and synchronized speech. Built a Flask backend using Gemini 2.0 Flash and ElevenLabs, achieving 0-delay playback from 10–15 s lag. Developed a React + Vite frontend and cached FFmpeg pipeline for responsive commentary.
               </p>
             </ExpandableRow>
+
           </Grid>
         </Block>
 
@@ -175,11 +212,15 @@ export default function Page() {
                 Hi, I&rsquo;m Philip Suh
               </h3>
               <p className="text-neutral-300 leading-relaxed">
-                I am currently a student at Stanford University studying computer science. I love to
-                build projects relating to physics research, esports, and other practical applications.
-                My background in physics has taught me how to think of the world as a system and computer
-                science has allowed me to bring my ideas to life. When I am not coding, I like to play
-                card games, watch tv shows, and keep up with professional esports.
+                I&rsquo;m Philip and I am currently a computer science student at Stanford with a background in Physics, passionate about building intelligent systems that bridge automation, data, and human insight.
+              </p>
+              <br />
+              <p className="text-neutral-300 leading-relaxed">
+                My work combines software engineering with computer vision and scientific computation. I&rsquo;ve developed particle-filter-based localization pipelines that use contrast analysis, noise subtraction, and morphological filtering to track microscopic features with physical-unit precision. These systems accelerate imaging workflows and bring reproducibility to experimental research.
+              </p>
+              <br />
+              <p className="text-neutral-300 leading-relaxed">
+                Outside the lab, I enjoy creating side projects that merge creativity with engineering from PokerSync, an AI poker commentator, to a voice-controlled interface for video and streaming services, and even esports analytics tools for competitive play. I like building projects that feel both novel and useful, exploring how human–computer interaction can make technology more intuitive and expressive.
               </p>
             </div>
           </div>
@@ -455,36 +496,26 @@ function ExpandableRow({
             className="px-4 sm:px-6 pb-4 sm:pb-5"
             style={{ overflow: "hidden" }}
           >
-            <div
-              className={[
-                "pt-2 gap-4 items-start",
-                hasLogo ? "grid grid-cols-1 md:grid-cols-[auto_1fr]" : "grid grid-cols-1",
-              ].join(" ")}
-            >
+            <div className="pt-2">
               {hasLogo && (
-                <div className="md:pr-2">
-                  {/* Full-bleed logo row height, preserves aspect ratio */}
-                  <Image
-                    src={logoSrc!}
-                    alt={logoAlt ?? "Logo"}
-                    width={400}
-                    height={160}
-                    className="h-16 md:h-20 w-auto block"
-                    priority={false}
-                  />
+                <Image
+                  src={logoSrc!}
+                  alt={logoAlt ?? "Logo"}
+                  width={400}
+                  height={160}
+                  className="h-20 md:h-25 w-auto float-left mr-4 mb-2"
+                  priority={false}
+                />
+              )}
+              
+              <div className="text-neutral-300 leading-relaxed">{children}</div>
+              {links.length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {links.map((lnk, i) => (
+                    <PillLink key={i} link={lnk} />
+                  ))}
                 </div>
               )}
-
-              <div>
-                <div className="text-neutral-300 leading-relaxed">{children}</div>
-                {links.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {links.map((lnk, i) => (
-                      <PillLink key={i} link={lnk} />
-                    ))}
-                  </div>
-                )}
-              </div>
             </div>
           </motion.div>
         </AnimatePresence>
