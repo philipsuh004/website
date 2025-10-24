@@ -43,9 +43,15 @@ export default function Page() {
               logoAlt="MIM Lab"
             >
               <p>
-                Designed and evaluated multiple models for automated scanning in microwave impedance microscopy (MIM) with methods including 
-                particle filter, CNN-based, and multimodal LLM approaches. Improved directional accuracy by 40% and reduced manual scanning 
-                time by 1-4 days using the particle filter method. Also helped create a hypercontrol GUI for experiments.
+                As a Software Developer Intern at the Stanford Shen Laboratory, I work on automation systems for microwave impedance microscopy (MIM) within a multidisciplinary research team combining physics, materials science, and software engineering. My primary focus is developing a particle-filter–based localization and automated scanning pipeline, which increased positioning accuracy by 40% and reduced manual scanning time by up to four days per experiment.
+              </p>
+              <br />
+              <p>
+                I designed and implemented this system in Python, leveraging tools such as OpenCV, scikit-image, and PyTorch for image processing and model training. The pipeline integrates both probabilistic and CNN-based localization methods, enabling robust alignment even in noisy imaging conditions.
+              </p>
+              <br />
+              <p>
+                Beyond algorithm development, I built a modular PyQt5 GUI that unifies data processing, live visualization, and hardware communication. This interface now serves as a central control hub for the lab's microscopy experiments, improving workflow efficiency for over 15 researchers and forming the basis for future automation work.
               </p>
             </ExpandableRow>
 
@@ -57,10 +63,15 @@ export default function Page() {
               logoAlt="KIPAC"
             >
               <p>
-                Analyzed luminosity datasets (SDSS, Fermi-LAT, VLBI) using non-parametric statistical methods in Python (numpy, scipy, 
-                astropy, pandas) to help understand accretion disk-jet correlations and their cosmological evolutions. Derived the 
-                radio-gamma luminosity funtion and applied Kendall&rsquo;s tau and Pearson correlation tests, showing higher gamma-radio local
-                luminosity correlations in comparison to radio-optical.
+                As a Data Science Intern at the Kavli Institute for Particle Astrophysics and Cosmology (KIPAC), I worked under Professor Vahe Petrosian in the multiwavelength astrophysics group, studying emission correlations across different energy bands in active galactic nuclei. My main project focused on analyzing cross-band luminosity relationships to investigate how particle acceleration and jet physics shape broadband emission spectra.
+              </p>
+              <br />
+              <p>
+                Using Python (NumPy, SciPy, Pandas, Astropy), I processed over 10,000 luminosity samples from SDSS, Fermi-LAT, and VLBI surveys. I applied the Efron–Petrosian method to remove redshift biases from truncated astronomical data and performed correlation analyses (Kendall's τ, Pearson) to identify statistically significant trends. The results revealed a stronger radio–gamma correlation (PCC = 0.53) compared to radio–optical (PCC = 0.40), consistent with a shared nonthermal origin of emission.
+              </p>
+              <br />
+              <p>
+                This work contributed to Professor Petrosian's ongoing research on nonthermal radiation mechanisms and cosmological selection effects in high-energy astrophysics. I also developed visualization and preprocessing pipelines that standardized the analysis workflow for future luminosity correlation studies within KIPAC.
               </p>
             </ExpandableRow>
 
@@ -72,10 +83,15 @@ export default function Page() {
               logoAlt="SLAC"
             >
               <p>
-                Tested semi-supervised methods for detecting beyond-the-standard-model tracking signatures by evaluating a proprietary 
-                permutation-invariant anomaly detection model (sci-kit learn), achieving results to the supervise Particle Flow Network.
-                Also investigated oversampling artifacts in high-energy physics pile-up simulation data that introduced bias into model
-                training.
+                As a Machine Learning Intern at SLAC National Accelerator Laboratory, I worked with Dr. Julia Gonski in the Particle Physics and Artificial Intelligence Group on permutation-invariant anomaly detection for identifying beyond-the-Standard-Model particle-tracking signatures. Our project aimed to uncover subtle, previously unmodeled collision patterns in large-scale simulation datasets, helping expand the sensitivity of collider experiments to new physics phenomena.
+              </p>
+              <br />
+              <p>
+                I benchmarked a permutation-invariant anomaly detection model in Python (scikit-learn, NumPy) across more than one million simulated particle events, achieving AUC = 0.98 and outperforming supervised baselines such as the Particle Flow Network. The model's architecture, designed to preserve event-level symmetries, demonstrated that unsupervised methods can rival fully labeled approaches in detecting exotic event topologies.
+              </p>
+              <br />
+              <p>
+                Working closely with Dr. Gonski, I also identified and diagnosed oversampling artifacts in pile-up simulations that caused model performance to collapse (AUC = 0.49). Tracing the problem to statistical imbalance, I helped design higher-statistics datasets and improved the preprocessing pipeline, laying the groundwork for future anomaly-detection research in high-energy physics.
               </p>
             </ExpandableRow>
           </Grid>
