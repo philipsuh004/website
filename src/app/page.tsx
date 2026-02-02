@@ -188,7 +188,7 @@ export default function Page() {
                 className="inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium hover:bg-white/10 transition"
               >
                 <FileText size={18} strokeWidth={1.8} />
-                View Résumé (PDF)
+                View Resume (PDF)
               </a>
             </div>
           </div>
