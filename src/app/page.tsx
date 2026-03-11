@@ -199,7 +199,7 @@ export default function Page() {
           <div className="panel p-8 flex flex-col md:flex-row items-center gap-8">
             <div className="flex-shrink-0">
               <Image
-                src="/photo.png"
+                src="/photo.png?v=2"
                 alt="Philip Suh"
                 width={200}
                 height={200}
@@ -303,7 +303,7 @@ function Intro() {
         {/* Portrait */}
         <div className="flex-shrink-0">
           <Image
-            src="/photo.png"
+            src="/photo.png?v=2"
             alt="Philip Suh"
             width={300}
             height={300}
