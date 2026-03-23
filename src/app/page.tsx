@@ -36,19 +36,6 @@ export default function Page() {
         <Block id="experiences" title="Experiences">
           <Grid>
             <ExpandableRow
-              title="Incoming Software Engineering Intern"
-              subtitle="Cloudflare (Replicate Team)"
-              date="Jun 2026 – Sep 2026"
-              logoSrc="/cloudflare.png"
-              logoAlt="Cloudflare"
-              badge="Incoming"
-            >
-              <p>
-                Incoming SWE intern on the Replicate team at Cloudflare, building distributed systems and developer infrastructure for Cloudflare&rsquo;s global edge platform. I&rsquo;ll be joining the team in San Francisco in summer 2026.
-              </p>
-            </ExpandableRow>
-
-            <ExpandableRow
               title="Software Developer Intern"
               subtitle="Stanford Shen Laboratory"
               date="May 2024–Present"
@@ -449,7 +436,6 @@ function ExpandableRow({
   links = [],
   logoSrc,
   logoAlt,
-  badge,
   defaultOpen = false,
 }: {
   title: string;
@@ -459,7 +445,6 @@ function ExpandableRow({
   links?: RowLink[];
   logoSrc?: string;
   logoAlt?: string;
-  badge?: string;
   defaultOpen?: boolean;
 }) {
   const [open, setOpen] = React.useState(defaultOpen);
@@ -494,17 +479,10 @@ function ExpandableRow({
               )}
             </div>
 
-            {/* Date and optional badge */}
-            <div className="shrink-0 flex items-center gap-2 flex-wrap justify-end">
-              {badge && (
-                <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-amber-400/90 bg-amber-400/10 border border-amber-400/25 rounded px-2 py-0.5">
-                  {badge}
-                </span>
-              )}
-              <span className="text-xs sm:text-sm text-neutral-300 whitespace-nowrap">
-                {date}
-              </span>
-            </div>
+            {/* Date (kept right on desktop, wraps on mobile) */}
+            <span className="shrink-0 text-xs sm:text-sm text-neutral-300 whitespace-nowrap">
+              {date}
+            </span>
           </div>
         </button>
 
